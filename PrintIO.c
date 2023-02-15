@@ -10,6 +10,6 @@ LangString LangConfig[] =
 };
 
 void FormatOutput(int id, int value, FILE * fp){
-    printf("%s=%d", LangConfig[id].string, value);
-    fprintf(fp, "%s=%d", LangConfig[id].string, value);
+    printf("%s=%d\n", LangConfig[id].string, value);
+    fprintf(fp, "%s=%d\n", LangConfig[id].string, value);
 }
