@@ -27,8 +27,8 @@ int GetandPrintSensorReading(SensorType sensorConfig, int maxSamples, int bitcon
     int value;
     srand(sensorConfig.id);
     for(smpCnt = 0; smpCnt < maxSamples; smpCnt ++){
-          value = rand()%(1<< bitconvert);
-          if(value > 0){
+          if(bitconvert > 0){
+              value = rand()%(1<< bitconvert);
               (*printIO)(sensorConfig.name, value, fp);
           }
     }
