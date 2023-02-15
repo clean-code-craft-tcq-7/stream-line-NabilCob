@@ -22,7 +22,7 @@ int main(){
   
   //Test Sender Format
   rewind(fp);
-  TestSenderFormat(maxSamples,fp);
+  assert(TestSenderFormat(maxSamples,fp) == 1);
   fclose(fp);
   return 0;
 }
