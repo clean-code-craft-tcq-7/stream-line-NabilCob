@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <assert.h>
 #include <regex.h>
 #include <string.h>
@@ -7,14 +8,20 @@
 #include "PrintIO.h"
 
 int main(){
-  FILE *fp
+  FILE *fp;
   int maxSamples = 50;
   int maxSensorsupported = 2;
   int tempCnt = 0;
   int socCnt = 0;
+  int retStatus = 0;
   fp = fopen("sensoroutput.txt", "w+");
-  SendSensorReading(maxSamples, maxSensorsupported, FormatOutput, fp);  
-
+  if(fp == NULL){
+     printf("\nfile opening failed");
+     return 0;
+  }
+  retStatus = SendSensorReading(maxSamples, maxSensorsupported, FormatOutput, fp);  
+  
+  assert(retStatus == maxSamples); 
   regex_t compPattern;  
   const char* pattern = "[a-zA-Z]+=\d+\n";  
   if (regcomp(&compPattern, pattern, REG_EXTENDED) != 0) return 0; 
