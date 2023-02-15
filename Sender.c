@@ -3,7 +3,7 @@
 
 #include "Sensor.h"
 #include "PrintIO.h"
-#include "test/TestSender.h"
+#include "TestSender.h"
 
 int main(){
   
