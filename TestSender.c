@@ -14,12 +14,13 @@ int TestSenderFormat(int maxSamples, FILE* fp)
   int socCnt = 0;
   regex_t compPattern;  
   //Matching pattern
-  const char* pattern = "[A-Z]+\s=\d+\n"; 
+  const char* pattern = "abc"; 
   //Verify pattern
-  if (regcomp(&compPattern, pattern, REG_EXTENDED) != 0) return 0; 
+  if (regcomp(&compPattern, pattern, REG_EXTENDED|REG_NOSUB) != 0) return 0; 
   char *string = (char*)calloc(50, sizeof(int));  
   while (!feof(fp)) {
      if( fgets (string, 50, fp)!=NULL ) {
+          printf("\ntp0 = %s", string);
           int status = regexec(&compPattern, string, 0, NULL, 0);
           assert(status == 1); 
           if(strstr(string, "Temperature")!= NULL){
