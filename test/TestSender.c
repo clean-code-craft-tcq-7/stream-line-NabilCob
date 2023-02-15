@@ -8,7 +8,7 @@
 #include "PrintIO.h"
 #include "TestSender.h"
 
-void TestSenderFormat(int maxSamples)
+void TestSenderFormat(int maxSamples, FILE* fp)
 {
   int tempCnt = 0;
   int socCnt = 0;
