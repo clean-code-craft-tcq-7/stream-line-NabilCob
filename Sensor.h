@@ -4,6 +4,7 @@
 typedef enum{
   Temperature,
   SOC,
+  MAX_SENSOR_SUPPORTED,
 }sensorName;
 
 typedef struct{
