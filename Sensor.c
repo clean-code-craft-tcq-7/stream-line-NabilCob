@@ -23,7 +23,7 @@ int GetandPrintSensorReading(SensorType sensorConfig, int maxSamples, void (*pri
     srand(sensorConfig.id);
     int smpCnt;
     for(smpCnt = 0; smpCnt < maxSamples; smpCnt ++){
-          (*printIO)(sensorConfig.name, rand(), fp);
+          (*printIO)(sensorConfig.name, rand()%1024, fp);
     }
     return smpCnt;
 }
