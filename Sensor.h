@@ -13,7 +13,9 @@ typedef struct{
 }SensorType;
 
 extern SensorType SensorConfig[MAX_SENSOR_SUPPORTED];
-int SendSensorReading(int maxSamples, int maxSensorsupported, void (*printIO)(int, int, FILE*), FILE *fp);
-int GetandPrintSensorReading(SensorType sensorConfig, int maxSamples, void (*printIO)(int, int, FILE*), FILE *fp);
+int SendSensorReading(int maxSamples, int maxSensorsupported, int bitconvert,
+                      void (*printIO)(int, int, FILE*), FILE *fp);
+int GetandPrintSensorReading(SensorType sensorConfig, int maxSamples, int bitconvert,
+                             void (*printIO)(int, int, FILE*), FILE *fp);
 
 #endif
