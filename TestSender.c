@@ -14,7 +14,7 @@ int TestSenderFormat(int maxSamples, FILE* fp)
   int socCnt = 0;
   regex_t compPattern;  
   //Matching pattern
-  const char* pattern = "[1-9]+"; 
+  const char* pattern = "[a-zA-Z]+=[1-9]+"; 
   if (regcomp(&compPattern, pattern, REG_EXTENDED|REG_NOSUB) != 0) return 0; 
   char *string = (char*)calloc(50, sizeof(int));  
   while (!feof(fp)) {
