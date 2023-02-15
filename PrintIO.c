@@ -1,6 +1,7 @@
 #include <stdio.h>
-#include "sensor.h"
-#include "print_io.h"
+
+#include "Sensor.h"
+#include "PrintIO.h"
 
 LangString LangConfig[] =
 {
