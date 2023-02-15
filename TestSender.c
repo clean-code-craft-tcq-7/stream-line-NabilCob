@@ -19,7 +19,7 @@ int TestSenderFormat(int maxSamples, FILE* fp)
   char *string = (char*)calloc(50, sizeof(int));  
   while (!feof(fp)) {
      if( fgets (string, 50, fp)!=NULL ) {
-          int status = regexec(&compPattern, "abc", 0, NULL, 0);
+          int status = regexec(&compPattern, "abc=12", 0, NULL, 0);
           assert(status == 0); 
           if(strstr(string, "Temperature")!= NULL){
                tempCnt ++;
