@@ -1,9 +1,10 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "Sensor.h"
 
 SensorType SensorConfig[MAX_SENSOR_SUPPORTED] =
 {
-  {Tempeature, 1},
+  {Temperature, 1},
   {SOC, 2}
 };
 
@@ -11,15 +12,15 @@ int SendSensorReading(int maxSamples, int maxSensorsupported, void (*printIO)(in
 {
      int lstIdx;
      for(lstIdx = 0; lstIdx < maxSensorsupported; lstIdx++){
-         GetandPrintSensorReading(SensorConfig, maxSamples, printIO, fp);
+         GetandPrintSensorReading(SensorConfig[lstIdx], maxSamples, printIO, fp);
      }
 }
 
 int GetandPrintSensorReading(SensorType sensorConfig, int maxSamples, void (*printIO)(int, int), FILE *fp)
 {
-    srand(sensorConfig.idx);
+    srand(sensorConfig.id);
     int smpCnt;
     for(smpCnt = 0; smpCnt < maxSamples; smpCnt ++){
-          (*printIO)(sensorConfig.idx, rand(), fp);
+          (*printIO)(sensorConfig.name, rand(), fp);
     }
 }
