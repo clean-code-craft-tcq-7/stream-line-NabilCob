@@ -16,7 +16,7 @@ int TestSenderFormat(int maxSamples, FILE* fp)
   //Matching pattern
   const char* pattern = "[1-9]+"; 
   if (regcomp(&compPattern, pattern, REG_EXTENDED|REG_NOSUB) != 0) return 0; 
-  int status = regexec(&compPattern, "abc", 0, NULL, 0);
+  int status = regexec(&compPattern, "123", 0, NULL, 0);
 /*  char *string = (char*)calloc(50, sizeof(int));  
   while (!feof(fp)) {
      if( fgets (string, 50, fp)!=NULL ) {
