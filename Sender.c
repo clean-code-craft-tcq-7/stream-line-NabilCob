@@ -1,4 +1,4 @@
-#include <stdio.h>
+/*#include <stdio.h>
 #include <assert.h>
 
 #include "Sensor.h"
@@ -26,3 +26,4 @@ int main(){
   fclose(fp);
   return 0;
 }
+*/
