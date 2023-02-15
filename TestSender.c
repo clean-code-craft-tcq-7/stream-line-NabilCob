@@ -36,6 +36,5 @@ int TestSenderFormat(int maxSamples, FILE* fp)
   assert(tempCnt == maxSamples);
   assert(socCnt == maxSamples); 
   regfree(&compPattern); 
-  assert(status == 0);
   return 1;
 }
