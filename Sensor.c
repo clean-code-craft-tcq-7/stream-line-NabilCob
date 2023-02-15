@@ -8,22 +8,29 @@ SensorType SensorConfig[MAX_SENSOR_SUPPORTED] =
   {SOC, 2}
 };
 
-int SendSensorReading(int maxSamples, int maxSensorsupported, void (*printIO)(int, int, FILE*), FILE *fp)
+int SendSensorReading(int maxSamples, int maxSensorsupported, int bitconvert,
+                      void (*printIO)(int, int, FILE*), FILE *fp)
 {
      int lstIdx;
      int retVal = 0;
      for(lstIdx = 0; lstIdx < maxSensorsupported; lstIdx++){
-         retVal = GetandPrintSensorReading(SensorConfig[lstIdx], maxSamples, printIO, fp);
+         retVal = GetandPrintSensorReading(SensorConfig[lstIdx], maxSamples, bitconvert,
+                                           printIO, fp);
      }
      return retVal; 
 }
 
-int GetandPrintSensorReading(SensorType sensorConfig, int maxSamples, void (*printIO)(int, int, FILE*), FILE *fp)
+int GetandPrintSensorReading(SensorType sensorConfig, int maxSamples, int bitconvert,
+                             void (*printIO)(int, int, FILE*), FILE *fp)
 {
-    srand(sensorConfig.id);
     int smpCnt;
+    int value;
+    srand(sensorConfig.id);
     for(smpCnt = 0; smpCnt < maxSamples; smpCnt ++){
-          (*printIO)(sensorConfig.name, rand()%1024, fp);
+          value = rand()%(1<< bitconvert);
+          if(value > 0){
+              (*printIO)(sensorConfig.name, value, fp);
+          }
     }
     return smpCnt;
 }
