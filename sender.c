@@ -10,7 +10,7 @@ int main(){
   int maxSamples = 50;
   int maxSensorsupported = 2;
   fp = fopen("sensoroutput.txt", "w+");
-  GetandPrintSensorReading(maxSamples, maxSensorsupported, printIO, fp);  
+  SendSensorReading(maxSamples, maxSensorsupported, printIO, fp);  
 
   regex_t compPattern;  
   const char* pattern = "[a-zA-Z]+=\d+\n";  
