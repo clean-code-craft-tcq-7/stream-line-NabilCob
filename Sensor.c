@@ -1,5 +1,5 @@
-
-#include "sensor.h"
+#include <stdio.h>
+#include "Sensor.h"
 
 SensorType SensorConfig[MAX_SENSOR_SUPPORTED] =
 {
