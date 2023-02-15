@@ -11,13 +11,15 @@ int main(){
   FILE *fp;
   int maxSamples = 50;
   int maxSensorsupported = 2;
+  int bitconveter = 12;
   int retStatus = 0;
   fp = fopen("sensoroutput.txt", "w+");
   if(fp == NULL){
      printf("\nfile opening failed");
      return 0;
   }
-  retStatus = SendSensorReading(maxSamples, maxSensorsupported, FormatOutput, fp);  
+  retStatus = SendSensorReading(maxSamples, maxSensorsupported, bitconveter,
+                                FormatOutput, fp);  
   assert(retStatus == maxSamples); 
   
   //Test Sender Format
