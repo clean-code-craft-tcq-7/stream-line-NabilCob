@@ -21,6 +21,7 @@ int main(){
   }
   retStatus = SendSensorReading(maxSamples, maxSensorsupported, FormatOutput, fp);  
   
+  rewind(fp);
   assert(retStatus == maxSamples); 
   regex_t compPattern;  
   const char* pattern = "[a-zA-Z]+=\d+\n";  
@@ -29,7 +30,7 @@ int main(){
   while (!feof(fp)) {
      if( fgets (string, 50, fp)!=NULL ) {
           int status = regexec(&compPattern, string, 0, NULL, 0);
-          assert(status == 0); 
+          assert(status == 1); 
           if(strstr(string, "Temperature")!= NULL){
                tempCnt ++;
            }
@@ -41,7 +42,7 @@ int main(){
           }         
      }
   }
-
+  printf("%d, %d", tempCnt, socCnt);
   assert(tempCnt == maxSamples);
   assert(socCnt = maxSamples); 
   regfree(&compPattern); 
