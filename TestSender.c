@@ -8,7 +8,7 @@
 #include "PrintIO.h"
 #include "TestSender.h"
 
-void TestSenderFormat(int maxSamples, FILE* fp)
+int TestSenderFormat(int maxSamples, FILE* fp)
 {
   int tempCnt = 0;
   int socCnt = 0;
@@ -35,6 +35,7 @@ void TestSenderFormat(int maxSamples, FILE* fp)
   }
   //verify number of samples read
   assert(tempCnt == maxSamples);
-  assert(socCnt = maxSamples); 
+  assert(socCnt == maxSamples); 
   regfree(&compPattern); 
+  return 1;
 }
