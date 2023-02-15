@@ -8,6 +8,8 @@
 #include "PrintIO.h"
 
 int main(){
+  
+  //Inputs
   FILE *fp;
   int maxSamples = 50;
   int maxSensorsupported = 2;
@@ -21,6 +23,7 @@ int main(){
   }
   retStatus = SendSensorReading(maxSamples, maxSensorsupported, FormatOutput, fp);  
   
+  //Test
   rewind(fp);
   assert(retStatus == maxSamples); 
   regex_t compPattern;  
@@ -30,8 +33,7 @@ int main(){
   while (!feof(fp)) {
      if( fgets (string, 50, fp)!=NULL ) {
           int status = regexec(&compPattern, string, 0, NULL, 0);
-          //assert(status == 1); 
-          printf("\nstatus = %d", status);
+          assert(status == 1); 
           if(strstr(string, "Temperature")!= NULL){
                tempCnt ++;
            }
@@ -44,8 +46,8 @@ int main(){
      }
   }
   printf("\n %d, %d", tempCnt, socCnt);
- // assert(tempCnt == maxSamples);
- // assert(socCnt = maxSamples); 
+  assert(tempCnt == maxSamples);
+  assert(socCnt = maxSamples); 
   regfree(&compPattern); 
 
   fclose(fp);
